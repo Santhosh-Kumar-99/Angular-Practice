@@ -1,0 +1,18 @@
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+li {
+    text-align: center;
+    width: 10em;
+    cursor: pointer;
+}
+
+.currency {
+    position: relative;
+    bottom: 0;
+}

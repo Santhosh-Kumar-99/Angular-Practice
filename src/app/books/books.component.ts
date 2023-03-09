@@ -1,22 +1,37 @@
-import { Component } from '@angular/core';
+import { BooksService } from './books.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Book } from '../typeInterfaces/Book';
+
+
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent {
-  name0: string = 'Clean Code'
-  author0: string = 'Robert C Martin'
-  booksImageUrl0: string = 'https://m.media-amazon.com/images/I/41SH-SvWPxL.jpg'
 
-  name1: string = 'Pragmatic Programmer'
-  author1: string = 'Andrew Hunt and David Thomas'
-  bookImageUrl1: string = 'https://m.media-amazon.com/images/I/41HXiIojloL._SX258_BO1,204,203,200_.jpg'
+export class BooksComponent implements OnInit {
+  books: Book[] = []
 
-  isDisabled: boolean = false;
+  cart: Book[] = []
 
-  handleClick(): void {
-    this.isDisabled = true
+  constructor(private booksService: BooksService) { }
+
+  ngOnInit(): void {
+    this.books = this.booksService.getBooks();
   }
+
+  istoogle: boolean = true;
+
+  inputValue: string = ''
+
+  // ngOnInit(): void {
+  //   console.log('onInit');
+
+  //   /* similar to useEffects but ngOnInit is called after the constructor
+  //    which is called after the component class is instaniated 
+  //    can be used for api calls and side effects
+  //    console.log('Component is ready to be mounted') */
+  // }
+
 }
